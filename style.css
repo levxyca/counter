@@ -37,3 +37,20 @@ body {
   cursor: pointer;
   margin: 0 10px;
 }
+
+@media (max-width: 425px) {
+    .header__title {
+        font-size: 3rem;
+    }
+    .counter__number {
+        font-size: 2.5rem;
+    }
+    .counter__btns {
+        display: flex;
+        flex-direction: column;
+    }
+    .counter__btns button {
+        font-size: 1rem;
+        margin: 10px 0;
+    }
+}
