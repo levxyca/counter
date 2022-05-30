@@ -1,22 +1,19 @@
+let count = 0;
+
 const display = document.getElementById("display");
-let number = document.getElementById("display").innerText;
-number = parseInt(number);
+const btns = document.querySelectorAll(".btn");
 
-const increase = document.getElementById("increase");
-const decrease = document.getElementById("decrease");
-const reset = document.getElementById("reset");
+btns.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    const btnActive = e.currentTarget.classList;
+    if (btnActive.contains("decrease")) {
+      count--;
+    } else if (btnActive.contains("increase")) {
+      count++;
+    } else {
+      count = 0;
+    }
 
-increase.addEventListener("click", () => {
-  number += 1;
-  display.textContent = `${number}`;
-});
-
-decrease.addEventListener("click", () => {
-  number -= 1;
-  display.textContent = `${number}`;
-});
-
-reset.addEventListener("click", () => {
-  number = 0;
-  display.textContent = `${number}`;
+    display.textContent = `${count}`;
+  });
 });
