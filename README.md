@@ -3,8 +3,8 @@
 Um contador feito com JavaScript.
 
 1. [Processo de Desenvolvimento](#processo-de-desenvolvimento)
-    - [Display](#displaydisplay)
-    - [Botões](#botõesbotoes)
+    - [Display](#display)
+    - [Botões](#botões)
 2. [Glossário](#glossário)
 
 ## Processo de Desenvolvimento
@@ -24,16 +24,8 @@ document.getElementById();
 
 - Manipulando os valores dentro do display.
 
-Para conseguirmos efetuar as operações necessárias e mostrar os resultados dentro do nosso contador, precisamos pegar o valor atual que estará sendo mostrado dentro do nosso *display*.
-
 ```javascript
-document.getElementById().textContent;
-```
-
-O valor  que pegamos pelo ``innerText`` vem como uma string, no caso dese projeto, queremos trabalhar com inteiros, por isso, precisamos transformar esse valor recebido de string para inteiro.
-
-```javascript
-parseInt(string, base);
+element.textContent;
 ```
 
 ### [Botões](#botoes)
@@ -41,27 +33,33 @@ parseInt(string, base);
 Para conseguir realizar ações quando clicamos em qualquer um dos botões da nossa aplicação, precisaremos selecionar esses elementos.
 
 ```javascript
-document.getElementById();
+document.querySelectorAll();
 ```
 
-Após selecionar os elementos referente aos botões, iremos adicionar um evento de click em cada um deles. Ou seja, quando a pessoa usuária clicar em um dos botões, uma função será executada.
+Após selecionar os elementos referente aos botões, iremos adicionar um evento de click em cada um deles. Ou seja, quando a pessoa usuária clicar em um dos botões, uma função será executada. Para não precisarmos adicionar o evento um por vez manualmente, usaremos o forEach, que vai percorrer por todos os elementos da nossa nodeList.
 
 ```javascript
-element.addEventListener('click', () => {
+btns.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
     // Your script here
-})
+  });
+});
 ```
 
 #### Increase / Decrease
 
 Do que precisamos?
 
-- Valor atual.
-
-- Atualizar o valor mostrado no display.
+- Criar uma estrutura condicional, como um if, para verificar qual botão foi acionado.
 
     ```javascript
-    document.getElementById().textContent = `${number}`;
+    if (btnActive.contains("decrease")){}
+    ```
+    
+ - No final, fora do if e dentro da função, atualizamos o valor mostrado no display.
+
+    ```javascript
+    element.textContent = `${count}`;
     ```
 
 ##### Increase
@@ -69,7 +67,7 @@ Do que precisamos?
 - Aumentar o valor atual em +1.
 
     ```javascript
-    number += 1;
+    count++;
     ```
 
 ##### Decrease
@@ -77,16 +75,15 @@ Do que precisamos?
 - Diminuir o valor atual em -1.
 
     ```javascript
-    number -= 1;
+    count--;
     ```
 
 #### Reset
 
-- Atualizar o valor mostrado no display para 0.
+- O contador tem seu valor mudado para 0.
 
     ```javascript
-    number = 0;
-    display.textContent = `${number}`;
+    count = 0;
     ```
 
 ## Glossário
@@ -96,4 +93,5 @@ Do que precisamos?
 - [document.getElementById()](https://developer.mozilla.org/pt-BR/docs/Web/API/Document/getElementById)
 - [Node.textContent](https://developer.mozilla.org/pt-BR/docs/Web/API/Node/textContent)
 - [GlobalEventHandlers.onclick](https://developer.mozilla.org/pt-BR/docs/Web/API/GlobalEventHandlers/onclick)
-- [parseInt()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
+- [Array.prototype.forEach()](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [String.prototype.contains](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/includes#string.prototype.contains)
